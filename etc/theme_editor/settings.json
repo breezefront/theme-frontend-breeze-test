@@ -1,0 +1,81 @@
+{
+  "version": "1.0",
+  "sections": [
+    {
+      "id": "php_test",
+      "name": "PHP Preview Test",
+      "order": 10,
+      "settings": [
+        {
+          "id": "toggle_flag",
+          "label": "Toggle Flag",
+          "type": "toggle",
+          "default": "false",
+          "description": "PHP-only: no CSS variable. Reload iframe shows updated value via $breezeThemeEditor->is()."
+        },
+        {
+          "id": "select_layout",
+          "label": "Layout Mode",
+          "type": "select",
+          "default": "grid",
+          "options": [
+            { "value": "grid", "label": "Grid" },
+            { "value": "list", "label": "List" },
+            { "value": "masonry", "label": "Masonry" }
+          ],
+          "description": "PHP-only: read via $breezeThemeEditor->get('php_test/select_layout')."
+        },
+        {
+          "id": "text_value",
+          "label": "Custom Text",
+          "type": "text",
+          "default": "hello world",
+          "description": "PHP-only: arbitrary string passed to PHP templates."
+        },
+        {
+          "id": "number_cols",
+          "label": "Grid Columns",
+          "type": "number",
+          "default": "4",
+          "min": 1,
+          "max": 12,
+          "description": "PHP-only: numeric value applied as a CSS class, not a CSS variable."
+        }
+      ]
+    },
+    {
+      "id": "css_test",
+      "name": "CSS Var Test",
+      "order": 20,
+      "settings": [
+        {
+          "id": "bg_color",
+          "label": "Debug Panel Background",
+          "type": "color",
+          "default": "#1e1e2e",
+          "property": "--bte-test-bg",
+          "description": "CSS variable: injected into iframe instantly without reload."
+        },
+        {
+          "id": "text_color",
+          "label": "Debug Panel Text",
+          "type": "color",
+          "default": "#cdd6f4",
+          "property": "--bte-test-color",
+          "description": "CSS variable: survives iframe reload triggered by PHP-only field changes."
+        },
+        {
+          "id": "font_size",
+          "label": "Debug Panel Font Size",
+          "type": "range",
+          "default": "13px",
+          "property": "--bte-test-font-size",
+          "unit": "px",
+          "min": 10,
+          "max": 20,
+          "description": "CSS variable: changes apply immediately, no reload needed."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+    "name": "swissup/theme-frontend-breeze-test",
+    "description": "Breeze Test Theme — demonstrates PHP-only and CSS-var settings in Breeze Theme Editor",
+    "type": "magento2-theme",
+    "license": "OSL-3.0",
+    "require": {
+        "swissup/theme-frontend-breeze-blank": "*",
+        "swissup/module-breeze-theme-editor": "*"
+    },
+    "autoload": {
+        "files": ["registration.php"]
+    }
+}
