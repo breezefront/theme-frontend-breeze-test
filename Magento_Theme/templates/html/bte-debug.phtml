@@ -1,29 +1,15 @@
 <?php
 /**
- * Breeze Theme Editor — PHP Preview Demo Panel
- *
- * This template overrides the page header to show a debug panel at the top
- * of every page. The panel displays the current value of all PHP-only settings
- * (those without a `property` / CSS variable in settings.json) and CSS-var
- * settings so you can verify live-preview behaviour in the Theme Editor.
- *
- * PHP-only settings (section "php_test"):
- *   - Changes trigger a debounced iframe reload (800 ms) in the editor.
- *   - The new value is passed via the `bte_php_preview` cookie and read here
- *     by $breezeThemeEditor->get() before the DB lookup.
- *
- * CSS-var settings (section "css_test"):
- *   - Changes are injected instantly into #bte-live-preview <style>.
- *   - After a PHP-only reload the CSS changes are re-applied on top automatically.
+ * Breeze Theme Editor — PHP Preview & Additional CSS Demo
  *
  * @var \Magento\Framework\View\Element\Template $block
  * @var \Magento\Framework\Escaper $escaper
  * @var \Swissup\BreezeThemeEditor\Api\View\Helper\BreezeThemeEditorInterface|null $breezeThemeEditor
  */
 
-$toggleFlag   = $breezeThemeEditor?->get('php_test/toggle_flag')   ?? '(null)';
-$selectLayout = $breezeThemeEditor?->get('php_test/select_layout') ?? '(null)';
-$textValue    = $breezeThemeEditor?->get('php_test/text_value')    ?? '(null)';
+$toggleFlag   = $breezeThemeEditor?->get('php_test/toggle_flag')   ?? 'false';
+$selectLayout = $breezeThemeEditor?->get('php_test/select_layout') ?? 'grid';
+$textValue    = $breezeThemeEditor?->get('php_test/text_value')    ?? 'hello world';
 $numberCols   = (int) ($breezeThemeEditor?->get('php_test/number_cols') ?? 4);
 $isOn         = $breezeThemeEditor?->is('php_test/toggle_flag', 'true') ?? false;
 ?>
@@ -55,13 +41,6 @@ $isOn         = $breezeThemeEditor?->is('php_test/toggle_flag', 'true') ?? false
     <span>
         <span style="opacity:.6">select_layout:</span>
         <b><?= $escaper->escapeHtml($selectLayout) ?></b>
-        <?php if ($selectLayout === 'list'): ?>
-            &nbsp;<span style="color:#fab387">⊟ list</span>
-        <?php elseif ($selectLayout === 'masonry'): ?>
-            &nbsp;<span style="color:#cba6f7">⊞ masonry</span>
-        <?php else: ?>
-            &nbsp;<span style="color:#89dceb">⊞ grid</span>
-        <?php endif; ?>
     </span>
 
     <span>
@@ -72,7 +51,6 @@ $isOn         = $breezeThemeEditor?->is('php_test/toggle_flag', 'true') ?? false
     <span>
         <span style="opacity:.6">number_cols:</span>
         <b><?= $escaper->escapeHtml((string) $numberCols) ?></b>
-        &nbsp;<span style="color:#f9e2af">(products-grid--<?= $escaper->escapeHtml((string) $numberCols) ?>-col)</span>
     </span>
 
     <span style="margin-left:auto;opacity:.5;font-size:.9em">
@@ -81,9 +59,3 @@ $isOn         = $breezeThemeEditor?->is('php_test/toggle_flag', 'true') ?? false
 </div>
 
 <div class="bte-test-hello">Hello World</div>
-
-<?php
-// Render the original header content from the parent theme.
-// The debug panel sits above the real header markup.
-echo $block->getChildHtml();
-?>
