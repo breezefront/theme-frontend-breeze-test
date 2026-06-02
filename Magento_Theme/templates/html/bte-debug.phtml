@@ -58,4 +58,4 @@ $isOn         = $breezeThemeEditor?->is('php_test/toggle_flag', 'true') ?? false
     </span>
 </div>
 
-<div class="bte-test-hello">Hello World</div>
+<div class="bte-test-hello"><?= $escaper->escapeHtml($textValue) ?></div>
