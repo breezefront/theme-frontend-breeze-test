@@ -77,6 +77,21 @@
           "description": "CSS variable: changes apply immediately, no reload needed."
         }
       ]
+    },
+    {
+      "id": "additional_styles",
+      "name": "Additional Styles",
+      "order": 30,
+      "settings": [
+        {
+          "id": "additional_css",
+          "label": "Additional CSS",
+          "type": "code",
+          "default": "",
+          "params": { "language": "css", "rows": 12 },
+          "description": "Raw CSS injected into the page. Try: .bte-test-hello { color: red; font-size: 32px; }"
+        }
+      ]
     }
   ]
 }
